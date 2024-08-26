@@ -14,16 +14,13 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     _firebaseMessaging.getToken().then((token) {
-      print('FCM Token: $token');
     });
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      print('포그라운드 메시지: ${message.notification!.body}');
       _showForegroundNotification(message.notification!);
     });
 
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      print('Message clicked!');
       // TODO: 알림을 처리하는 로직을 추가하세요.
     });
 
